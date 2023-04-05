@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:nectaar/view/screens/number_screen.dart';
@@ -44,22 +43,28 @@ class SigninScreen extends StatelessWidget {
                     height: 15.h,
                   ),
                   IntlPhoneField(
-                    keyboardType: TextInputType.number,
-                    onSubmitted: (v) {
-                      if (v == "0123456789") {
-                        Navigation.push(
-                          context,
-                          NumberScreen(),
-                        );
-                      } else {
-                        Fluttertoast.showToast(
-                          msg: "Enter from 0 to 9",
-                        backgroundColor: Colors.red,
-                          textColor: Colors.white,
-
-                        );
-                      }
+                    keyboardType: TextInputType.none,
+                    onTap: () {
+                      Navigation.push(
+                        context,
+                        NumberScreen(),
+                      );
                     },
+                    // onSubmitted: (v) {
+                    //   if (v == "0123456789") {
+                    //     Navigation.push(
+                    //       context,
+                    //       NumberScreen(),
+                    //     );
+                    //   } else {
+                    //     Fluttertoast.showToast(
+                    //       msg: "Enter from 0 to 9",
+                    //     backgroundColor: Colors.red,
+                    //       textColor: Colors.white,
+                    //
+                    //     );
+                    //   }
+                    // },
                     initialCountryCode: "EG",
                     onChanged: (v) {
                       print(v);

@@ -14,8 +14,9 @@ class SplashScreen extends StatelessWidget {
       backgroundColor: Color(0XFF53B175),
       nextScreen: OnboardScreen(),
       splash: SplashCustom(),
-      splashIconSize: double.infinity,
+      splashIconSize: 50.w,
       centered: true,
+
     );
   }
 }

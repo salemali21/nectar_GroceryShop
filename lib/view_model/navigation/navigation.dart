@@ -10,12 +10,13 @@ class Navigation {
     );
   }
 
-  static void pushAndReplacement(context, Widget SecondScreen) {
-    Navigator.pushReplacement(
+  static void pushAndReplacement(context, Widget secondScreen) {
+    Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
-        builder: (context) => SecondScreen,
+        builder: (context) => secondScreen,
       ),
+      (route) => false,
     );
   }
 }

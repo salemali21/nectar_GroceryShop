@@ -1,4 +1,3 @@
-import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -6,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nectaar/view/screens/selectLocation_screen.dart';
 import 'package:nectaar/view_model/navigation/navigation.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:timer_count_down/timer_count_down.dart';
 
 class VerificationScreen extends StatelessWidget {
   const VerificationScreen({Key? key}) : super(key: key);
@@ -86,38 +86,53 @@ class VerificationScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CircularCountDownTimer(
-                      initialDuration: 0,
-                      isReverseAnimation: true,
-                      strokeWidth: 8.r,
-                      onComplete: () {
-                         TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Resend Code",
-                            style: GoogleFonts.poppins(
-                                fontSize: 15.sp, color: Color(0xff53b175)),
-                          ),
-                        );
-                      },
-                      isReverse: true,
-                      width: 100.w,
-                      height: 100.h,
-                      duration: 60,
-                      fillColor: Color(
-                        0xff53B175,
+                    Countdown(
+                      seconds: 90,
+                      interval: Duration(seconds: 1),
+                      build: (context, double time) => Text(
+                        (time < 60)
+                            ? "0 : ${time.toInt()}"
+                            : "${(time / 60).toInt()} : ${(((time / 60) - ((time / 60).toInt())) * 60).toInt()}",
                       ),
-                      ringColor: Colors.grey,
-                    ),
+                    )
                   ],
                 ),
                 Spacer(),
                 TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Resend Code",
-                    style: GoogleFonts.poppins(
-                        fontSize: 15.sp, color: Color(0xff53B175)),
+                  onPressed: () {
+                    Countdown(
+                      seconds: 90,
+                      interval: Duration(seconds: 1),
+                      build: (context, double time) => Text(
+                        (time < 60)
+                            ? "0 : ${time.toInt()}"
+                            : "${(time / 60).toInt()} : ${(((time / 60) - ((time / 60).toInt())) * 60).toInt()}",
+                      ),
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Text(
+                        "Resend Code",
+                        style: GoogleFonts.poppins(
+                            fontSize: 15.sp, color: Color(0xff53B175)),
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      Countdown(
+                        seconds: 90,
+                        onFinished: (){
+
+                        },
+                        interval: Duration(seconds: 1),
+                        build: (context, double time) => Text(
+                          (time < 60)
+                              ? "0 : ${time.toInt()}"
+                              : "${(time / 60).toInt()} : ${(((time / 60) - ((time / 60).toInt())) * 60).toInt()}",
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(

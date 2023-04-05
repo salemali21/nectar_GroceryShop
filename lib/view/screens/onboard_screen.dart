@@ -11,80 +11,82 @@ class OnboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        reverse: true,
-        child: Stack(children: [
+      body: Stack(
+        alignment: AlignmentDirectional.bottomCenter,
+        children: [
           Image.asset(
             "assets/man.png",
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
             width: double.infinity,
             height: MediaQuery.of(context).size.height,
           ),
           PositionedDirectional(
-            top: 370.h,
+            bottom: 30.h,
             start: 30.w,
-            child: Column(
-              children: [
-                Image.asset(
-                  "assets/carrot.png",
-                  width: 50.w,
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Text(
-                  "Welcome\nto our store",
-                  style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontSize: 35.sp,
-                    fontWeight: FontWeight.bold,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Image.asset(
+                    "assets/carrot.png",
+                    width: 50.w,
                   ),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Text(
-                  "Get your groceries in as fast as one hour",
-                  style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontSize: 13.sp,
-                    fontWeight: FontWeight.w300,
+                  SizedBox(
+                    height: 10.h,
                   ),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Container(
-                  width: 300.w,
-                  height: 50.h,
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.r),
+                  Text(
+                    "Welcome\nto our store",
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 35.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(
-                        0XFF53B175,
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Text(
+                    "Get your groceries in as fast as one hour",
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 13.sp,
+                      fontWeight: FontWeight.w300,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Container(
+                    width: 300.w,
+                    height: 50.h,
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.r),
+                    ),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(
+                          0XFF53B175,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigation.pushAndReplacement(
+                          context,
+                          SigninScreen(),
+                        );
+                      },
+                      child: Text(
+                        "Get Started",
+                        style: GoogleFonts.poppins(),
                       ),
                     ),
-                    onPressed: () {
-                      Navigation.pushAndReplacement(
-                        context,
-                        SigninScreen(),
-                      );
-                    },
-                    child: Text(
-                      "Get Started",
-                      style: GoogleFonts.poppins(),
-                    ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           )
-        ]),
+        ],
       ),
     );
   }

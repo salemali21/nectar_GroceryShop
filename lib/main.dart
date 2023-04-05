@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nectaar/view/screens/home_screen.dart';
 import 'package:nectaar/view/screens/splash_screen.dart';
+import 'package:nectaar/view_model/bloc/home_cubit/home_cubit.dart';
+import 'package:nectaar/view_model/bloc/login_cubit/login_cubit.dart';
+import 'package:nectaar/view_model/bloc/signup_cubit/signup_cubit.dart';
 
 import 'view_model/local/shared_preferences/shared_preferences_key.dart';
 
@@ -15,16 +20,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
-        );
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => SignupCubit(),
+        ),
+        BlocProvider(
+          create: (context) => LoginCubit(),
+        ),
+        BlocProvider(
+          create: (context) => HomeCubit(),
+        )
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: SplashScreen(),
+          );
+        },
+      ),
     );
   }
 }
