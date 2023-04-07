@@ -2,21 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nectaar/view/screens/home_screen.dart';
-import 'package:nectaar/view/screens/signup_screen.dart';
-import 'package:nectaar/view_model/bloc/login_cubit/login_cubit.dart';
-import 'package:nectaar/view_model/bloc/login_cubit/login_state.dart';
+import 'package:nectaar/view/screens/auth/login_screen.dart';
+import 'package:nectaar/view_model/bloc/signup_cubit/signup_cubit.dart';
+import 'package:nectaar/view_model/bloc/signup_cubit/signup_state.dart';
 import 'package:nectaar/view_model/navigation/navigation.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LoginCubit, LoginState>(
+    return BlocConsumer<SignupCubit, SignupState>(
       listener: (context, state) {},
       builder: (context, state) {
-        var cubit = LoginCubit.get(context);
+        var cubit = SignupCubit.get(context);
         return Scaffold(
           extendBodyBehindAppBar: true,
           body: SingleChildScrollView(
@@ -29,9 +28,7 @@ class LoginScreen extends StatelessWidget {
                   width: double.infinity,
                 ),
                 Padding(
-                  padding: EdgeInsets.all(
-                    10.w,
-                  ),
+                  padding: EdgeInsets.all(10.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -52,7 +49,7 @@ class LoginScreen extends StatelessWidget {
                         height: 30.h,
                       ),
                       Text(
-                        "Login",
+                        "Sign Up",
                         style: GoogleFonts.poppins(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.w500,
@@ -63,7 +60,7 @@ class LoginScreen extends StatelessWidget {
                         width: double.infinity,
                       ),
                       Text(
-                        "Enter your email and password",
+                        "Enter your credentials to continue",
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(),
                       ),
@@ -72,12 +69,27 @@ class LoginScreen extends StatelessWidget {
                       ),
                       TextFormField(
                         decoration: InputDecoration(
-                          labelText: "Email",
+                          labelText: "Username",
                           labelStyle: GoogleFonts.poppins(
                             fontWeight: FontWeight.w500,
                             fontSize: 15.sp,
                           ),
                         ),
+                        keyboardType: TextInputType.emailAddress,
+                      ),
+                      SizedBox(
+                        height: 25.h,
+                      ),
+                      TextFormField(
+                        decoration: InputDecoration(
+                            labelText: "Email",
+                            labelStyle: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 15.sp,
+                            ),
+                            suffixIcon: Icon(
+                              Icons.task_alt,
+                            )),
                         keyboardType: TextInputType.emailAddress,
                       ),
                       SizedBox(
@@ -106,15 +118,62 @@ class LoginScreen extends StatelessWidget {
                         ),
                         keyboardType: TextInputType.visiblePassword,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                      Wrap(
+                        // alignment: WrapAlignment.center,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
+                          RichText(
+                            textScaleFactor: 1,
+                            textHeightBehavior: TextHeightBehavior(
+                                applyHeightToFirstAscent: !true),
+                            text: TextSpan(
+                              text: "By continuing you agree to our ",
+                              style: GoogleFonts.poppins(
+                                fontSize: 12.sp,
+                                color: Colors.black,
+                                height: 1.5,
+                              ),
+                            ),
+                          ),
                           TextButton(
                             onPressed: () {},
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              minimumSize: Size(10.w, 10.h),
+                              maximumSize: Size(double.infinity, 10.h),
+                            ),
                             child: Text(
-                              "Forget Password?",
+                              "Terms of Service",
                               style: GoogleFonts.poppins(
-                                  fontSize: 15.sp, color: Colors.black),
+                                  fontSize: 12.sp, height: 1),
+                            ),
+                          ),
+                          RichText(
+                            textScaleFactor: 1,
+                            text: TextSpan(
+                              text: " and",
+                              style: GoogleFonts.poppins(
+                                color: Colors.black,
+                                fontSize: 12.sp,
+                                height: 1.5,
+                              ),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              minimumSize: Size(10.w, 14.h),
+                              maximumSize: Size(double.infinity, 14.h),
+                            ),
+                            child: Text(
+                              "Privacy Policy.",
+                              style: GoogleFonts.poppins(
+                                fontSize: 12.sp,
+                                height: 1.5,
+                              ),
                             ),
                           ),
                         ],
@@ -138,14 +197,9 @@ class LoginScreen extends StatelessWidget {
                                   0XFF53B175,
                                 ),
                               ),
-                              onPressed: () {
-                                Navigation.push(
-                                  context,
-                                  HomeScreen(),
-                                );
-                              },
+                              onPressed: () {},
                               child: Text(
-                                "Login",
+                                "Sign Up",
                                 style: GoogleFonts.poppins(),
                               ),
                             ),
@@ -159,18 +213,19 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Don’t have an account?",
+                            "Already have an account?",
                             style: GoogleFonts.poppins(),
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigation.push(
-                                context,
-                                SignUpScreen(),
-                              );
+                              // Navigation.pushAndReplacement(
+                              //   context,
+                              //   LoginScreen(),
+                              // );
+                              Navigator.pop(context);
                             },
                             child: Text(
-                              "Sign Up",
+                              "Login",
                               style: GoogleFonts.poppins(
                                 color: Color(
                                   0xff53B175,

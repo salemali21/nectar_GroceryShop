@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:nectaar/view/screens/number_screen.dart';
+import 'package:nectaar/view/screens/auth/number_screen.dart';
 import 'package:nectaar/view_model/navigation/navigation.dart';
 
 class SigninScreen extends StatelessWidget {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nectaar/view/screens/productDetails_screen.dart';
+import 'package:nectaar/view_model/navigation/navigation.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({Key? key}) : super(key: key);
@@ -8,10 +10,17 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Color(0xffE2E2E2),borderRadius: BorderRadius.circular(15.r),
+      borderRadius: BorderRadius.circular(
+        15.r,
+      ),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigation.push(
+            context,
+            ProductDetails(),
+          );
+        },
         child: SizedBox(
           width: 160.w,
           child: Card(

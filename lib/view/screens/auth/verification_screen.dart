@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nectaar/view/screens/selectLocation_screen.dart';
+import 'package:nectaar/view/screens/auth/selectLocation_screen.dart';
 import 'package:nectaar/view_model/navigation/navigation.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:timer_count_down/timer_count_down.dart';

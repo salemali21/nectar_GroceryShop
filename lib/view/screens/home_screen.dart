@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         var cubit = HomeCubit.get(context);
         return Scaffold(
           body: SafeArea(
-            child: ShopLayout(),
+            child: cubit.layouts[cubit.currentIndex],
           ),
           bottomNavigationBar: BottomNavigationBar(
             onTap: (index) => cubit.setCurrentIndex(index),

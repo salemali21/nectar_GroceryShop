@@ -45,6 +45,8 @@ dependencies:
   timer_count_down: ^2.2.2
   carousel_slider: ^4.2.1
   flutter_bloc: ^8.1.2
+  font_awesome_flutter: ^10.4.0
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
