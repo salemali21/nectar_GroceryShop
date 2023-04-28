@@ -68,6 +68,7 @@ class SignUpScreen extends StatelessWidget {
                         height: 25.h,
                       ),
                       TextFormField(
+                        controller: cubit.usernameController,
                         decoration: InputDecoration(
                           labelText: "Username",
                           labelStyle: GoogleFonts.poppins(
@@ -81,6 +82,7 @@ class SignUpScreen extends StatelessWidget {
                         height: 25.h,
                       ),
                       TextFormField(
+                        controller: cubit.emailController,
                         decoration: InputDecoration(
                             labelText: "Email",
                             labelStyle: GoogleFonts.poppins(
@@ -96,6 +98,7 @@ class SignUpScreen extends StatelessWidget {
                         height: 25.h,
                       ),
                       TextFormField(
+                        controller: cubit.passwordController,
                         obscureText: cubit.secure,
                         decoration: InputDecoration(
                           suffixIcon: IconButton(
@@ -197,7 +200,9 @@ class SignUpScreen extends StatelessWidget {
                                   0XFF53B175,
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                cubit.register();
+                              },
                               child: Text(
                                 "Sign Up",
                                 style: GoogleFonts.poppins(),

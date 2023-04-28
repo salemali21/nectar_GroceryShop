@@ -14,7 +14,14 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is LoginSuccessState) {
+          Navigation.push(
+            context,
+            HomeScreen(),
+          );
+        }
+      },
       builder: (context, state) {
         var cubit = LoginCubit.get(context);
         return Scaffold(
@@ -71,6 +78,7 @@ class LoginScreen extends StatelessWidget {
                         height: 25.h,
                       ),
                       TextFormField(
+                        controller: cubit.emailController,
                         decoration: InputDecoration(
                           labelText: "Email",
                           labelStyle: GoogleFonts.poppins(
@@ -84,6 +92,7 @@ class LoginScreen extends StatelessWidget {
                         height: 25.h,
                       ),
                       TextFormField(
+                        controller: cubit.passwordController,
                         obscureText: cubit.secure,
                         decoration: InputDecoration(
                           suffixIcon: IconButton(
@@ -139,10 +148,7 @@ class LoginScreen extends StatelessWidget {
                                 ),
                               ),
                               onPressed: () {
-                                Navigation.push(
-                                  context,
-                                  HomeScreen(),
-                                );
+                                cubit.login();
                               },
                               child: Text(
                                 "Login",

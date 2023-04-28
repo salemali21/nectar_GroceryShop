@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nectaar/view/components/banner.dart';
 import 'package:nectaar/view/components/exclusive_offer.dart';
-import 'package:nectaar/view/components/product_card.dart';
 
 class ShopLayout extends StatelessWidget {
   const ShopLayout({Key? key}) : super(key: key);
@@ -13,7 +12,9 @@ class ShopLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.only(top: 10.w),
+        padding: EdgeInsets.only(
+          top: 10.w,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -34,7 +35,9 @@ class ShopLayout extends StatelessWidget {
                 Icon(
                   Icons.location_on,
                 ),
-                Text("Dhaka, Banassre"),
+                Text(
+                  "Dhaka, Banassre",
+                ),
               ],
             ),
             SizedBox(

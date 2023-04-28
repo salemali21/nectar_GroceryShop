@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nectaar/view/screens/home_screen.dart';
 import 'package:nectaar/view/screens/splash/splash_screen.dart';
 import 'package:nectaar/view_model/bloc/home_cubit/home_cubit.dart';
 import 'package:nectaar/view_model/bloc/login_cubit/login_cubit.dart';
 import 'package:nectaar/view_model/bloc/productDetails_cubit/product_cubit.dart';
 import 'package:nectaar/view_model/bloc/signup_cubit/signup_cubit.dart';
+import 'package:nectaar/view_model/network/dio_helper/dio_helper.dart';
 
 import 'view_model/local/shared_preferences/shared_preferences_key.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreference.initShared();
+  DioHelper.init();
   runApp(const MyApp());
 }
 
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => HomeCubit(),
-        ),BlocProvider(
+        ),
+        BlocProvider(
           create: (context) => ProductCubit(),
         )
       ],

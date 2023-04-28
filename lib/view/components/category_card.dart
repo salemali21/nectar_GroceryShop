@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +11,7 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int randomColor = (math.Random().nextDouble() * 0xFFF8A44CB2).toInt();
     return Material(
       borderRadius: BorderRadius.circular(
         15.r,
@@ -27,21 +28,13 @@ class CategoryCard extends StatelessWidget {
           height: 160.h,
           width: 160.w,
           child: Card(
-            color: Color(
-              Random().nextInt(
-                0xffffffff,
-              ),
-            ).withAlpha(1).withOpacity(.5),
+            color: Color(randomColor).withOpacity(.2),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
                 15.r,
               ),
               side: BorderSide(
-                color: Color(
-                  Random().nextInt(
-                    0xffffffff,
-                  ),
-                ),
+                color: Color(randomColor),
               ),
             ),
             child: Padding(
