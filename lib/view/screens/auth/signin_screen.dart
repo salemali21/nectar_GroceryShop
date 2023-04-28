@@ -50,21 +50,6 @@ class SigninScreen extends StatelessWidget {
                         NumberScreen(),
                       );
                     },
-                    // onSubmitted: (v) {
-                    //   if (v == "0123456789") {
-                    //     Navigation.push(
-                    //       context,
-                    //       NumberScreen(),
-                    //     );
-                    //   } else {
-                    //     Fluttertoast.showToast(
-                    //       msg: "Enter from 0 to 9",
-                    //     backgroundColor: Colors.red,
-                    //       textColor: Colors.white,
-                    //
-                    //     );
-                    //   }
-                    // },
                     initialCountryCode: "EG",
                     onChanged: (v) {
                       print(v);

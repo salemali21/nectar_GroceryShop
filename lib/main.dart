@@ -7,8 +7,7 @@ import 'package:nectaar/view_model/bloc/login_cubit/login_cubit.dart';
 import 'package:nectaar/view_model/bloc/productDetails_cubit/product_cubit.dart';
 import 'package:nectaar/view_model/bloc/signup_cubit/signup_cubit.dart';
 import 'package:nectaar/view_model/network/dio_helper/dio_helper.dart';
-
-import 'view_model/local/shared_preferences/shared_preferences_key.dart';
+import 'view_model/local/shared_preferences/shared_preferences.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,11 +1,5 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:nectaar/view/components/banner.dart';
-import 'package:nectaar/view/components/product_card.dart';
-import 'package:nectaar/view/layouts/shop_layout.dart';
 import 'package:nectaar/view_model/bloc/home_cubit/home_cubit.dart';
 import 'package:nectaar/view_model/bloc/home_cubit/home_state.dart';
 
